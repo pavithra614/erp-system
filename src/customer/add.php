@@ -13,14 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contact_no = trim($_POST['contact_no'] ?? '');
     $district = trim($_POST['district'] ?? '');
 
-    // Enhanced validation
+    //Validation of the form
     if (empty($title)) {
         $errors['title'] = "Title is required.";
     }
 
     if (empty($first_name)) {
         $errors['first_name'] = "First name is required.";
-    } elseif (strlen($first_name) < 2) {
+    } elseif (strlen($first_name) < 2) { //strln for the length of the string 
         $errors['first_name'] = "First name must be at least 2 characters.";
     } elseif (!preg_match("/^[a-zA-Z\s]+$/", $first_name)) {
         $errors['first_name'] = "First name can only contain letters and spaces.";
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($last_name)) {
         $errors['last_name'] = "Last name is required.";
-    } elseif (strlen($last_name) < 2) {
+    } elseif (strlen($last_name) < 2) {  //strln for the length of the string
         $errors['last_name'] = "Last name must be at least 2 characters.";
     } elseif (!preg_match("/^[a-zA-Z\s]+$/", $last_name)) {
         $errors['last_name'] = "Last name can only contain letters and spaces.";
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['contact_no'] = "Contact number must be exactly 10 digits.";
     } else {
         // Check if contact number already exists
-        $stmt = $pdo->prepare("SELECT id FROM customer WHERE contact_no = ?");
+        $stmt = $pdo->prepare("SELECT id FROM customer WHERE contact_no = ?"); //create a database statement and check wheather there is a existing contact numbers are there
         $stmt->execute([$contact_no]);
         if ($stmt->fetch()) {
             $errors['contact_no'] = "This contact number is already registered.";
