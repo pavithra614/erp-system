@@ -1,5 +1,6 @@
 <?php
 require '../../config/db.php';
+require '../../includes/header.php';
 
 // Handle search and filter
 $search = $_GET['search'] ?? '';
@@ -161,7 +162,7 @@ $categories = $pdo->query("SELECT * FROM item_category")->fetchAll();
                                         </td>
                                         <td>
                                             <span class="text-primary fw-semibold">
-                                                $<?= number_format($item['unit_price'], 2) ?>
+                                                LKR<?= number_format($item['unit_price'], 2) ?>
                                             </span>
                                         </td>
                                         <td class="text-center">

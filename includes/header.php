@@ -16,7 +16,7 @@
             border: 1px solid rgba(0, 0, 0, 0.125);
         }
         .btn-primary {
-            background-color: #0d6efd;
+            background-color:rgb(6, 80, 215);
             border-color: #0d6efd;
         }
         .table th {
